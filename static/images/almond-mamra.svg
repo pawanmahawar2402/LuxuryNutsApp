@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f7ecd9"/>
+      <stop offset="100%" stop-color="#e8d9b8"/>
+    </linearGradient>
+    <linearGradient id="body" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#7a5230"/>
+      <stop offset="100%" stop-color="#553417"/>
+    </linearGradient>
+  </defs>
+  <circle cx="100" cy="100" r="96" fill="url(#bg)"/>
+  <path d="M100,32 C126,32 145,68 145,104 C145,144 125,170 100,170 C75,170 55,144 55,104 C55,68 74,32 100,32 Z"
+        fill="url(#body)" stroke="#3b2314" stroke-width="3"/>
+  <path d="M78,55 C72,75 74,95 82,110" fill="none" stroke="#3b2314" stroke-width="2" opacity="0.55"/>
+  <path d="M95,48 C90,80 92,120 98,155" fill="none" stroke="#3b2314" stroke-width="2" opacity="0.55"/>
+  <path d="M115,58 C122,82 120,110 108,135" fill="none" stroke="#3b2314" stroke-width="2" opacity="0.55"/>
+  <path d="M128,80 C132,100 126,120 116,138" fill="none" stroke="#3b2314" stroke-width="2" opacity="0.5"/>
+  <path d="M70,100 C74,118 82,132 92,142" fill="none" stroke="#3b2314" stroke-width="1.8" opacity="0.5"/>
+  <text x="100" y="188" font-family="Segoe UI, sans-serif" font-size="16" font-weight="700" fill="#b8862b" text-anchor="middle">MAMRA</text>
+</svg>

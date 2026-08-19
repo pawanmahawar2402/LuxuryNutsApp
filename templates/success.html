@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="success-box">
+    <h2>Order Confirmed!</h2>
+    <p>Thank you, {{ order.customer_name }}. Your order #{{ order.id }} has been placed successfully.</p>
+    <p>Payment ID: {{ order.razorpay_payment_id }}</p>
+
+    <table style="margin-top:20px; text-align:left;">
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Quantity</th>
+          <th>Qty</th>
+          <th>Line Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in items %}
+          <tr>
+            <td>
+              <div class="product-cell">
+                {% set p = products.get(item.product_id) %}
+                {% if p %}<img class="thumb" src="{{ url_for('static', filename='images/' ~ p.image) }}" alt="">{% endif %}
+                {{ item.product_name }}
+              </div>
+            </td>
+            <td>{{ item.quantity_label }}</td>
+            <td>{{ item.qty }}</td>
+            <td>Rs. {{ item.unit_price * item.qty }}</td>
+          </tr>
+        {% endfor %}
+        <tr class="total-row">
+          <td colspan="3">Total Paid</td>
+          <td>Rs. {{ order.total_amount }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p style="margin-top:20px;">Delivering to: {{ order.address }} &middot; {{ order.phone }}</p>
+
+    <a class="btn btn-gold" href="{{ url_for('index') }}">Continue Shopping</a>
+  </div>
+{% endblock %}

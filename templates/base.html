@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Luxury Tree Nuts & Dry Fruits{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header>
+    <a href="{{ url_for('index') }}">
+      <h1>Luxury Tree Nuts &amp; Dry Fruits</h1>
+      <span class="tagline">Premium quality, delivered fresh</span>
+    </a>
+    <a class="cart-link" href="{{ url_for('view_cart') }}">Cart ({{ cart_count if cart_count is defined else 0 }})</a>
+  </header>
+  <main>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for message in messages %}
+          <div class="flash">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+    {% block content %}{% endblock %}
+  </main>
+</body>
+</html>

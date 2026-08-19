@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+  <section class="hero">
+    <div class="hero-text">
+      <h2>Handpicked Premium Nuts &amp; Dry Fruits</h2>
+      <p>Farm-fresh almonds, cashews, pistachios, walnuts and more &mdash; delivered to your door.</p>
+    </div>
+    <div class="hero-icons">
+      <img src="{{ products_by_category['Almonds (Badam Giri)'][0].web_image }}" alt="Almonds">
+      <img src="{{ products_by_category['Cashews (Kaju)'][0].web_image }}" alt="Cashews">
+      <img src="{{ products_by_category['Pistachios'][0].web_image }}" alt="Pistachios">
+      <img src="{{ products_by_category['Walnuts'][0].web_image }}" alt="Walnuts">
+      <img src="{{ products_by_category['Dried Berries & Figs'][1].web_image }}" alt="Blueberries">
+    </div>
+  </section>
+
+  {% for category, products in products_by_category.items() %}
+    <section class="category">
+      <h2>{{ category }}</h2>
+      <div class="product-grid">
+        {% for p in products %}
+          <div class="product-card">
+            <div class="product-image">
+              {% if p.badge %}<span class="product-badge">{{ p.badge }}</span>{% endif %}
+              <img src="{{ p.web_image }}" onerror="this.onerror=null;this.src='{{ url_for('static', filename='images/' ~ p.image) }}'" alt="{{ p.name }}" loading="lazy">
+            </div>
+            <h3>{{ p.name }}</h3>
+            <div class="qty-label">{{ p.quantity_label }}</div>
+            <div class="price">Rs. {{ p.price }}</div>
+            <form action="{{ url_for('add_to_cart', product_id=p.id) }}" method="post">
+              <input type="number" name="qty" value="1" min="1">
+              <button type="submit">Add to cart</button>
+            </form>
+          </div>
+        {% endfor %}
+      </div>
+    </section>
+  {% endfor %}
+{% endblock %}

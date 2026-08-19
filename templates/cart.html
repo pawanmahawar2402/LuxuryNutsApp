@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2>Your Cart</h2>
+  {% if items %}
+    <table>
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Quantity</th>
+          <th>Price</th>
+          <th>Qty</th>
+          <th>Line Total</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in items %}
+          <tr>
+            <td>
+              <div class="product-cell">
+                <img class="thumb" src="{{ url_for('static', filename='images/' ~ item.image) }}" alt="">
+                {{ item.name }}
+              </div>
+            </td>
+            <td>{{ item.quantity_label }}</td>
+            <td>Rs. {{ item.price }}</td>
+            <td>
+              <form action="{{ url_for('update_cart', product_id=item.id) }}" method="post" style="display:flex; gap:6px;">
+                <input class="qty-input" type="number" name="qty" value="{{ item.qty }}" min="0">
+                <button type="submit">Update</button>
+              </form>
+            </td>
+            <td>Rs. {{ item.line_total }}</td>
+            <td>
+              <form action="{{ url_for('remove_from_cart', product_id=item.id) }}" method="post">
+                <button type="submit">Remove</button>
+              </form>
+            </td>
+          </tr>
+        {% endfor %}
+        <tr class="total-row">
+          <td colspan="4">Total</td>
+          <td colspan="2">Rs. {{ total }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <div style="margin-top: 20px; display:flex; gap:12px;">
+      <a class="btn" href="{{ url_for('index') }}">Continue shopping</a>
+      <a class="btn btn-gold" href="{{ url_for('checkout') }}">Proceed to checkout</a>
+    </div>
+  {% else %}
+    <div class="empty-state">
+      <p>Your cart is empty.</p>
+      <a class="btn btn-gold" href="{{ url_for('index') }}">Browse products</a>
+    </div>
+  {% endif %}
+{% endblock %}
