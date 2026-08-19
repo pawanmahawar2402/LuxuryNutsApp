@@ -45,7 +45,7 @@ WEB_IMAGE_URLS = {
     "almond-mamra.svg": "https://commons.wikimedia.org/wiki/Special:FilePath/KASHMIRI_MAMRA_ALMONDS.jpg?width=900",
     "cashew.svg": "https://commons.wikimedia.org/wiki/Special:FilePath/Raw_cashew_(1).jpg?width=900",
     "cashew-roasted.svg": "https://commons.wikimedia.org/wiki/Special:FilePath/Vengurla_cashews_laid_out_in_the_sun_for_drying.jpg?width=900",
-    "pistachio.svg": "https://commons.wikimedia.org/wiki/Special:FilePath/Pistachio.jpg?width=900",
+    "pistachio.svg": "https://commons.wikimedia.org/wiki/Special:FilePath/Pile_of_pistachios.jpg?width=900",
     "walnut-inshell.svg": "https://commons.wikimedia.org/wiki/Special:FilePath/3_walnuts.jpg?width=900",
     "walnut-kernel.svg": "https://commons.wikimedia.org/wiki/Special:FilePath/Black_walnut_cracked_open_to_expose_meat.jpg?width=900",
     "breakfast-mix.svg": "https://commons.wikimedia.org/wiki/Special:FilePath/Studentenfutter_01.JPG?width=900",
@@ -54,11 +54,24 @@ WEB_IMAGE_URLS = {
     "raisin.svg": "https://commons.wikimedia.org/wiki/Special:FilePath/BLACK_RAISINS.jpg?width=900",
     "blueberry.svg": "https://commons.wikimedia.org/wiki/Special:FilePath/Fresh_blueberries_(49901958521).jpg?width=900",
     "cranberry.svg": "https://commons.wikimedia.org/wiki/Special:FilePath/Cranberries_in_bowl.jpg?width=900",
-    "figs.svg": "https://commons.wikimedia.org/wiki/Special:FilePath/Fig_cut_open.jpg?width=900",
+    "figs.svg": "https://commons.wikimedia.org/wiki/Special:FilePath/Dried_figs_(1).jpg?width=900",
+}
+
+PRODUCT_IMAGE_URLS = {
+    "badam-giri-viraat": "https://commons.wikimedia.org/wiki/Special:FilePath/A_Basket_of_Almonds.jpg?width=900",
+    "badam-giri-roasted-viraat": "https://commons.wikimedia.org/wiki/Special:FilePath/Salted_almonds.jpg?width=900",
+    "badam-giri-mamra": "https://commons.wikimedia.org/wiki/Special:FilePath/KASHMIRI_MAMRA_ALMONDS.jpg?width=900",
+    "badam-giri-mamra-viraat": "https://commons.wikimedia.org/wiki/Special:FilePath/KASHMIRI_MAMRA_ALMONDS.jpg?width=900",
+    "kaju-viraat-jumbo": "https://commons.wikimedia.org/wiki/Special:FilePath/Close-up_of_Vengurla_Cashews.jpg?width=900",
+    "kaju-roasted": "https://commons.wikimedia.org/wiki/Special:FilePath/CASHEW_NUTS_AS_HEALTHY_NUTRITION_PACKED_SNACK_OPTIONS.jpg?width=900",
+    "kaju-roasted-viraat": "https://commons.wikimedia.org/wiki/Special:FilePath/CASHEW_NUTS_AS_HEALTHY_NUTRITION_PACKED_SNACK_OPTIONS.jpg?width=900",
+    "pistachio-viraat-jumbo": "https://commons.wikimedia.org/wiki/Special:FilePath/Dry_pista_without_shell.jpg?width=900",
+    "walnut-kernels": "https://commons.wikimedia.org/wiki/Special:FilePath/A_walnut_kernel_up_close.jpg?width=900",
+    "figs": "https://commons.wikimedia.org/wiki/Special:FilePath/Dried_figs_(2).jpg?width=900",
 }
 
 for product in PRODUCTS_LIST:
-    product["web_image"] = WEB_IMAGE_URLS[product["image"]]
+    product["web_image"] = PRODUCT_IMAGE_URLS.get(product["id"], WEB_IMAGE_URLS[product["image"]])
 
 PRODUCTS = {p["id"]: p for p in PRODUCTS_LIST}
 
